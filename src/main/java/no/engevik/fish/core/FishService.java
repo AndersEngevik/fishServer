@@ -12,8 +12,8 @@ public class FishService {
     @Autowired
     private FishRepository fishRepository;
 
-    public Fish create(String name, String species, double lengthInCm, double weightInKg) throws Exception {
-        return new Fish(UUID.randomUUID().toString(), name, species, lengthInCm, weightInKg);
+    public void create(String name, String species, double lengthInCm, double weightInKg) throws Exception {
+        fishRepository.save(new Fish(UUID.randomUUID().toString(), name, species, lengthInCm, weightInKg));
     }
 
     public List<Fish> getAll() {
@@ -25,6 +25,7 @@ public class FishService {
     }
 
     public void update(Fish fish) {
+        fishRepository.update(fish);
     }
 
     public void delete(String id) {

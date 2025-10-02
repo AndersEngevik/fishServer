@@ -5,7 +5,6 @@ import no.engevik.fish.core.FishService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping ("fish")
@@ -18,8 +17,8 @@ public class FishController {
     }
 
     @PostMapping
-    public Fish create(@RequestBody CreateFishRequest request) throws Exception {
-        return fishService.create(request.getName(), request.getSpecies(), request.getLengthInCm(),
+    public void create(@RequestBody CreateFishRequest request) throws Exception {
+        fishService.create(request.getName(), request.getSpecies(), request.getLengthInCm(),
                 request.getWeightInKg());
     }
 
