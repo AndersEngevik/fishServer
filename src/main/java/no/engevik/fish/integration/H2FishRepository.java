@@ -23,11 +23,15 @@ public class H2FishRepository implements FishRepository {
 
     @Override
     public String save(Fish fish) {
-        return "";
+        final String sql = "insert into fish (id, name, species, lengthInCm, weightInKg) values (?, ?, ?, ?, ?)";
+        jdbc.update(sql, fish.getId(), fish.getName(), fish.getSpecies(), fish.getLengthInCm(), fish.getWeightInKg());
+        return fish.getId();
     }
 
     @Override
     public void update(Fish fish) {
+        final String sql = "update fish set (name = ?, species = ?, lengthInCm = ?, weightInKg = ?) where id = ?";
+        jdbc.update(sql, fish.getName(), fish.getSpecies(), fish.getLengthInCm(), fish.getWeightInKg(), fish.getId());
     }
 
     @Override

@@ -22,11 +22,11 @@ public class Fish {
             throw new Exception("weight cannot be less than 0");
         }
 
+        this.id = id;
         this.name = name;
         this.species = species;
         this.lengthInCm = lengthInCm;
         this.weightInKg = weightInKg;
-        this.id = id;
     }
 
     public String getName() {
